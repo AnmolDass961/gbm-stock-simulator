@@ -34,11 +34,3 @@ def compare_models(full_price:pd.Series,training_days,days,n_path,seed=1)->pd.Da
     bootstrap_score['model']='Bootstrap'
 
     return pd.DataFrame([gbm_score,bootstrap_score]).set_index('model')
-
-if __name__ == "__main__":
-    ticker=['AAPL','TSLA','MSFT']
-    for t in ticker:
-        prices=fetch_data(t,'2024-01-01','2026-01-01')
-        result = compare_models(prices,252,60,1000,seed=1)
-        print(t)
-        print(result)
